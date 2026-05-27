@@ -378,6 +378,68 @@
     /* FOOTER */
     footer { border-top: 1px solid var(--border); padding: 1.75rem 1.5rem; text-align: center; font-size: 13px; color: var(--text2); }
     footer .fa { color: var(--indigo2); }
+
+    /* THEME TOGGLE */
+    .theme-toggle {
+      background: none; border: 1px solid var(--border);
+      border-radius: 7px; padding: .4rem .5rem; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text2); transition: color .15s, border-color .15s, background .15s;
+      flex-shrink: 0;
+    }
+    .theme-toggle:hover { color: var(--text); border-color: rgba(99,102,241,.3); background: rgba(99,102,241,.06); }
+    .theme-toggle .icon-sun  { display: none; }
+    .theme-toggle .icon-moon { display: block; }
+    [data-theme="light"] .theme-toggle .icon-sun  { display: block; }
+    [data-theme="light"] .theme-toggle .icon-moon { display: none; }
+
+    /* LIGHT MODE */
+    [data-theme="light"] {
+      --bg:      #f8fafc;
+      --bg2:     #f1f5f9;
+      --surface: rgba(0, 0, 0, 0.03);
+      --border:  rgba(0, 0, 0, 0.09);
+      --indigo:  #6366f1;
+      --indigo2: #4f46e5;
+      --cyan:    #0891b2;
+      --green:   #059669;
+      --text:    #09090b;
+      --text2:   #52525b;
+      --grad:    linear-gradient(135deg, #6366f1, #0891b2);
+    }
+    [data-theme="light"] #nav {
+      background: rgba(248, 250, 252, 0.92);
+    }
+    [data-theme="light"] #mob {
+      background: var(--bg2);
+    }
+    [data-theme="light"] .hero-glow {
+      background: radial-gradient(circle, rgba(99,102,241,.08) 0%, transparent 65%);
+    }
+    [data-theme="light"] .hero-glow2 {
+      background: radial-gradient(circle, rgba(8,145,178,.05) 0%, transparent 70%);
+    }
+    [data-theme="light"] ::-webkit-scrollbar-track { background: var(--bg2); }
+    [data-theme="light"] .tl-dot { border-color: var(--bg2); }
+    [data-theme="light"] .edu-card { box-shadow: 0 1px 4px rgba(0,0,0,.06); }
+    [data-theme="light"] .edu-card:hover { box-shadow: 0 12px 40px rgba(99,102,241,.12); }
+    [data-theme="light"] .lang-card { box-shadow: 0 1px 3px rgba(0,0,0,.05); }
+    [data-theme="light"] .skill-tag {
+      background: rgba(99,102,241,.07);
+      border-color: rgba(99,102,241,.18);
+    }
+    [data-theme="light"] .skill-tag:hover {
+      background: rgba(99,102,241,.14);
+      border-color: rgba(99,102,241,.35);
+    }
+    [data-theme="light"] .contact-item { box-shadow: 0 1px 3px rgba(0,0,0,.05); }
+    [data-theme="light"] .divider {
+      background: linear-gradient(90deg, transparent, rgba(99,102,241,.15), rgba(8,145,178,.12), transparent);
+    }
+    [data-theme="light"] .timeline::before {
+      background: linear-gradient(to bottom, var(--indigo), rgba(99,102,241,0));
+    }
+    [data-theme="light"] .sec-num { color: rgba(99,102,241,.06); }
   </style>
 </head>
 <body>
@@ -393,9 +455,15 @@
       <li><a href="#community">Community</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
-    <button class="ham" onclick="toggleMob()" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
+    <div style="display:flex;align-items:center;gap:.5rem">
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+        <svg class="icon-moon" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/></svg>
+        <svg class="icon-sun" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="5" stroke-width="2"/><path stroke-linecap="round" stroke-width="2" d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      </button>
+      <button class="ham" onclick="toggleMob()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </div>
 </nav>
 <div id="mob">
@@ -758,6 +826,19 @@
 <script>
   function toggleMob() { document.getElementById("mob").classList.toggle("open"); }
   function closeMob()  { document.getElementById("mob").classList.remove("open"); }
+
+  function toggleTheme() {
+    const isDark = document.documentElement.getAttribute("data-theme") !== "light";
+    const next = isDark ? "light" : "dark";
+    document.documentElement.setAttribute("data-theme", next);
+    localStorage.setItem("theme", next);
+  }
+
+  (function () {
+    const saved = localStorage.getItem("theme");
+    const theme = saved || "dark";
+    document.documentElement.setAttribute("data-theme", theme);
+  })();
 </script>
 </body>
 </html>
