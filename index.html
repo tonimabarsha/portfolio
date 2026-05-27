@@ -355,6 +355,26 @@
     .contact-item:hover { color: var(--text); border-color: rgba(99,102,241,.3); background: rgba(99,102,241,.06); }
     .contact-item svg { color: var(--indigo2); flex-shrink: 0; }
 
+    /* COMMUNITY */
+    .community-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+    @media (max-width: 640px) { .community-grid { grid-template-columns: 1fr; gap: 2rem; } }
+    .vol-item { padding: .9rem 0; border-bottom: 1px solid rgba(255,255,255,.04); }
+    .vol-item:last-child { border-bottom: none; }
+    .vol-role { font-size: 13.5px; font-weight: 600; color: var(--text); }
+    .vol-org { font-size: 12.5px; color: var(--indigo2); margin: .15rem 0; }
+    .vol-period { font-family: "JetBrains Mono", monospace; font-size: 11px; color: var(--text2); margin-bottom: .4rem; letter-spacing: .02em; }
+    .vol-desc { font-size: 12.5px; color: var(--text2); line-height: 1.6; }
+    .mem-item { padding: .7rem 0; border-bottom: 1px solid rgba(255,255,255,.04); }
+    .mem-item:last-child { border-bottom: none; }
+    .mem-role { font-size: 13.5px; font-weight: 600; color: var(--text); }
+    .mem-org { font-size: 12.5px; color: var(--text2); margin: .15rem 0; }
+    .mem-period { font-family: "JetBrains Mono", monospace; font-size: 11px; color: var(--text2); letter-spacing: .02em; }
+    .lang-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .75rem; margin-top: .5rem; }
+    .lang-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: .85rem; text-align: center; transition: border-color .2s, transform .2s; }
+    .lang-card:hover { border-color: rgba(99,102,241,.28); transform: translateY(-2px); }
+    .lang-name { font-family: "Space Grotesk", sans-serif; font-size: .95rem; font-weight: 600; color: var(--text); }
+    .lang-level { font-size: 11px; color: var(--text2); margin-top: .25rem; }
+
     /* FOOTER */
     footer { border-top: 1px solid var(--border); padding: 1.75rem 1.5rem; text-align: center; font-size: 13px; color: var(--text2); }
     footer .fa { color: var(--indigo2); }
@@ -370,6 +390,7 @@
       <li><a href="#education">Education</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#awards">Awards</a></li>
+      <li><a href="#community">Community</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
     <button class="ham" onclick="toggleMob()" aria-label="Menu">
@@ -382,6 +403,7 @@
   <a href="#education" onclick="closeMob()">Education</a>
   <a href="#skills" onclick="closeMob()">Skills</a>
   <a href="#awards" onclick="closeMob()">Awards</a>
+  <a href="#community" onclick="closeMob()">Community</a>
   <a href="#contact" onclick="closeMob()">Contact</a>
 </div>
 
@@ -597,6 +619,10 @@
           <div><div class="award-name">5th National Data Analytics Competition (NDAC)</div><div class="award-meta">2025</div></div>
         </div>
         <div class="award-row">
+          <div class="award-ico ico-gold">&#x1F9A3;</div>
+          <div><div class="award-name">4 Non-Credit Points &ndash; Extracurricular &amp; Leadership</div><div class="award-meta">Rover Scouting &middot; Daffodil International University, B.Sc.</div></div>
+        </div>
+        <div class="award-row">
           <div class="award-ico ico-gold">&#x1F396;&#xFE0F;</div>
           <div><div class="award-name">Champion &ndash; Intra-University Debate Competition</div><div class="award-meta">Daffodil International University</div></div>
         </div>
@@ -630,8 +656,77 @@
 
 <hr class="divider">
 
-<section id="contact">
+<section id="community">
   <div class="sec-num">05</div>
+  <div class="container">
+    <div class="sec-tag">engagement</div>
+    <h2 class="sec-title">Community &amp; <span>Memberships</span></h2>
+    <div class="community-grid">
+      <div>
+        <div class="award-group-label">Volunteering</div>
+        <div class="vol-item">
+          <div class="vol-role">Student Prefect, Department of CSE</div>
+          <div class="vol-org">Daffodil International University</div>
+          <div class="vol-period">Spring 2018 &ndash; Summer 2019</div>
+          <div class="vol-desc">Assisted in Data Structures &amp; Algorithms lectures and labs, prepared problem sets, supported lab examinations, and provided academic assistance to students.</div>
+        </div>
+        <div class="vol-item">
+          <div class="vol-role">Volunteer Organiser &ndash; BdOI &amp; IOI Selection</div>
+          <div class="vol-org">Bangladesh Olympiad in Informatics (BdOI)</div>
+          <div class="vol-period">February 2020</div>
+          <div class="vol-desc">Assisted in coordination of the BdOI and IOI Selection Contest 2020, supporting national-level programming competitions.</div>
+        </div>
+
+        <div class="award-group-label" style="margin-top:2rem">Social Activities</div>
+        <div class="vol-item">
+          <div class="vol-role">Youth Volunteer</div>
+          <div class="vol-org">Youth Ending Hunger Bangladesh &ndash; The Hunger Project</div>
+          <div class="vol-period">Jun 2015 &ndash; Present &middot; International Non-Profit</div>
+          <div class="vol-desc">Engaged in youth-led community development initiatives, capacity-building trainings, awareness campaigns, and social mobilization activities aligned with sustainable development goals.</div>
+        </div>
+      </div>
+      <div>
+        <div class="award-group-label">Networks &amp; Memberships</div>
+        <div class="mem-item">
+          <div class="mem-role">Founding Member</div>
+          <div class="mem-org">DIU Girls&rsquo; Computer Programming Club (GCPC)</div>
+          <div class="mem-period">Jan 2018 &ndash; Jun 2019</div>
+        </div>
+        <div class="mem-item">
+          <div class="mem-role">Rover Scout</div>
+          <div class="mem-org">DIU Air Rover Scout Group (DIUARSG)</div>
+          <div class="mem-period">Jan 2018 &ndash; Jul 2020</div>
+        </div>
+        <div class="mem-item">
+          <div class="mem-role">General Secretary</div>
+          <div class="mem-org">Daffodil International University Debate Club (DIUDC-PC)</div>
+          <div class="mem-period">Feb 2017 &ndash; Jan 2018</div>
+        </div>
+
+        <div class="award-group-label" style="margin-top:2rem">Languages</div>
+        <div class="lang-grid">
+          <div class="lang-card">
+            <div class="lang-name">Bengali</div>
+            <div class="lang-level">Native</div>
+          </div>
+          <div class="lang-card">
+            <div class="lang-name">English</div>
+            <div class="lang-level">IELTS 6.5 &middot; B2</div>
+          </div>
+          <div class="lang-card">
+            <div class="lang-name">Hindi</div>
+            <div class="lang-level">C1 Independent</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="contact">
+  <div class="sec-num">06</div>
   <div class="container">
     <div class="contact-inner">
       <div class="sec-tag" style="justify-content:center">get in touch</div>
